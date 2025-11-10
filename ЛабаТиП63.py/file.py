@@ -8,6 +8,16 @@ for line in text[1:]:
         continue
     else:
         sport = parts[3].strip()
-        sports.append(sport)
+        if "," in sport:
+            sport = sport.split(",")
+            for i in range(len(sport)):
+                sports.append(sport[i])
+        else:
+            sports.append(sport)
+
+for i in range(len(sports)):
+    sports[i] = sports[i].strip()
+
 sports_3 = Counter(sports)
 print(sports_3.most_common(3))
+
