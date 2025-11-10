@@ -1,6 +1,8 @@
 from collections import *
-f = open("/Users/nezoxxg/sport.txt", "r", encoding="cp1251")
-text = f.readlines()
+import urllib.request
+url = "http://dfedorov.spb.ru/python3/sport.txt"
+with urllib.request.urlopen(url) as response:
+    text = response.read().decode('cp1251').splitlines()
 sports = []
 for line in text[1:]:
     parts = line.split('\t')
@@ -20,4 +22,5 @@ for i in range(len(sports)):
 
 sports_3 = Counter(sports)
 print(sports_3.most_common(3))
+
 
